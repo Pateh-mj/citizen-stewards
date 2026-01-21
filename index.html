@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CitizensStewards | Community Stewardship</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .hero-gradient { background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('images/kpage.jpg'); background-size: cover; background-position: center; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="text-2xl font-extrabold tracking-tight">
+                <span class="text-emerald-600">CITIZEN</span>Stewards
+            </div>
+            <div class="hidden md:flex space-x-8 items-center font-semibold text-sm uppercase tracking-wide">
+                <a href="#" class="hover:text-emerald-600 transition">Mission</a>
+                <a href="#impact" class="hover:text-emerald-600 transition">Impact</a>
+                <a href="javascript:void(0)" onclick="toggleAuth()" class="bg-emerald-600 text-white px-5 py-2 rounded-full hover:bg-emerald-700 transition">
+                    <i class="fa fa-user-circle mr-1"></i> Steward Login
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="guestView">
+    <section class="hero-gradient h-[85vh] flex items-center justify-center text-center px-6">
+        <div class="max-w-4xl">
+            <span class="text-emerald-400 font-bold tracking-widest uppercase text-sm">A New Standard for Chalala</span>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white mt-4 mb-6 leading-tight">
+                We don't just live here. <br><span class="text-emerald-500">We lead here.</span>
+            </h1>
+            <p class="text-slate-300 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
+                True stewardship means taking ownership of our streets, our lights, and our future.
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#report" class="bg-emerald-600 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-emerald-700 transition transform hover:-translate-y-1 text-center">Report an Incident</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="impact" class="py-24 bg-white">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+    <div class="group bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 hover:shadow-2xl transition-all duration-500">
+        <div class="relative h-64">
+            <img src="images/laying-new-asphalt-road-construction-246812337.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Fixed Road">
+            <div class="absolute top-4 left-4 flex gap-2">
+                <span class="bg-emerald-500 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">Resolved</span>
+                <span class="bg-white/90 backdrop-blur-sm text-slate-900 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">Infrastructure</span>
+            </div>
+        </div>
+        <div class="p-8">
+            <h4 class="text-xl font-bold text-slate-900 mb-2">Shantumbu Road Restoration</h4>
+            <p class="text-slate-500 text-sm leading-relaxed mb-6">A severe pothole reported by a Silver Steward was repaired by the council within 5 days of verification.</p>
+            <div class="flex items-center justify-between pt-6 border-t border-slate-200">
+                <span class="text-xs font-bold text-slate-400">Fixed: Jan 12, 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="group bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 hover:shadow-2xl transition-all duration-500">
+        <div class="relative h-64">
+            <img src="images/istockphoto-1298159310-612x612.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Street Light">
+            <div class="absolute top-4 left-4 flex gap-2">
+                <span class="bg-emerald-500 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">Resolved</span>
+                <span class="bg-white/90 backdrop-blur-sm text-slate-900 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">Safety</span>
+            </div>
+        </div>
+        <div class="p-8">
+            <h4 class="text-xl font-bold text-slate-900 mb-2">Ward 4 Lighting Grid</h4>
+            <p class="text-slate-500 text-sm leading-relaxed mb-6">Restored visibility to the main market area after a transformer fault was flagged by 12 different stewards.</p>
+            <div class="flex items-center justify-between pt-6 border-t border-slate-200">
+                <span class="text-xs font-bold text-slate-400">Fixed: Jan 18, 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="group bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 hover:shadow-2xl transition-all duration-500">
+        <div class="relative h-64">
+            <img src="images/Drainage De-silting.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Drainage">
+            <div class="absolute top-4 left-4 flex gap-2">
+                <span class="bg-blue-500 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">In Progress</span>
+                <span class="bg-white/90 backdrop-blur-sm text-slate-900 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">Sanitation</span>
+            </div>
+        </div>
+        <div class="p-8">
+            <h4 class="text-xl font-bold text-slate-900 mb-2">Drainage De-silting</h4>
+            <p class="text-slate-500 text-sm leading-relaxed mb-6">Pre-emptive clearing of waste from main water channels to prevent flash flooding during the rainy season.</p>
+            <div class="flex items-center justify-between pt-6 border-t border-slate-200">
+                <span class="text-xs font-bold text-slate-400">Started: Jan 20, 2026</span>
+            </div>
+        </div>
+    </div>
+</div>
+    </section>
+
+<section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-extrabold text-slate-900 mb-4">The Stewardship Cycle</h2>
+            <p class="text-slate-600 max-w-2xl mx-auto text-lg">We’ve simplified community action into four professional stages to ensure results.</p>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-8">
+            <div class="relative group">
+                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 text-2xl font-bold group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">1</div>
+                <h4 class="text-xl font-bold mb-3 text-slate-900">Document</h4>
+                <p class="text-slate-500 text-sm leading-relaxed">Capture a clear photo and location of the infrastructure fault through the portal.</p>
+                <div class="hidden md:block absolute top-8 left-20 w-full border-t-2 border-dashed border-slate-100 -z-10"></div>
+            </div>
+
+            <div class="relative group">
+                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 text-2xl font-bold group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">2</div>
+                <h4 class="text-xl font-bold mb-3 text-slate-900">Verify</h4>
+                <p class="text-slate-500 text-sm leading-relaxed">Community members upvote the report to confirm its urgency and accuracy.</p>
+                <div class="hidden md:block absolute top-8 left-20 w-full border-t-2 border-dashed border-slate-100 -z-10"></div>
+            </div>
+
+            <div class="relative group">
+                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 text-2xl font-bold group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">3</div>
+                <h4 class="text-xl font-bold mb-3 text-slate-900">Resolve</h4>
+                <p class="text-slate-500 text-sm leading-relaxed">We coordinate with local council teams or verified contractors to perform the fix.</p>
+                <div class="hidden md:block absolute top-8 left-20 w-full border-t-2 border-dashed border-slate-100 -z-10"></div>
+            </div>
+
+            <div class="relative group">
+                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 text-2xl font-bold group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">4</div>
+                <h4 class="text-xl font-bold mb-3 text-slate-900">Audit</h4>
+                <p class="text-slate-500 text-sm leading-relaxed">The final fix is photographed and the status is updated to 'Resolved' for transparency.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section class="py-24 bg-slate-50 border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-extrabold text-slate-900 mb-4">Rise Through the Ranks</h2>
+            <p class="text-slate-600 text-lg">Your impact is measured. Every action brings you closer to being a Community Leader.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white p-10 rounded-3xl border border-slate-200 shadow-sm text-center">
+                <div class="text-amber-700 text-4xl mb-4 font-black opacity-30">01</div>
+                <h3 class="text-2xl font-bold mb-2">Bronze Steward</h3>
+                <p class="text-slate-500 text-sm mb-6">Starting your journey. Eligible to report and track basic community issues.</p>
+                <span class="px-4 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-600">0 - 5 IMPACT REPORTS</span>
+            </div>
+
+            <div class="bg-white p-10 rounded-3xl border-2 border-emerald-500 shadow-xl shadow-emerald-100 text-center relative">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-emerald-600 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Most Popular</div>
+                <div class="text-slate-400 text-4xl mb-4 font-black opacity-30">02</div>
+                <h3 class="text-2xl font-bold mb-2">Silver Steward</h3>
+                <p class="text-slate-500 text-sm mb-6">A trusted contributor. Gains voting power on community priority issues.</p>
+                <span class="px-4 py-1 bg-emerald-100 rounded-full text-xs font-bold text-emerald-600">6 - 20 IMPACT REPORTS</span>
+            </div>
+
+            <div class="bg-white p-10 rounded-3xl border border-slate-200 shadow-sm text-center">
+                <div class="text-yellow-500 text-4xl mb-4 font-black opacity-30">03</div>
+                <h3 class="text-2xl font-bold mb-2">Gold Steward</h3>
+                <p class="text-slate-500 text-sm mb-6">A community leader. Direct line to council liaisons and impact verification.</p>
+                <span class="px-4 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-600">20+ IMPACT REPORTS</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+</div>
+
+<div id="portalView" class="hidden bg-slate-50 min-h-screen">
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-end mb-8">
+                <div>
+                    <h2 class="text-3xl font-black text-slate-900">Steward Console</h2>
+                    <p class="text-emerald-600 font-bold" id="welcomeUser">Welcome back!</p>
+                </div>
+                <button onclick="handleLogout()" class="text-red-500 font-bold text-sm hover:underline tracking-widest uppercase">
+                    <i class="fa fa-sign-out mr-1"></i> Secure Logout
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                    <span class="text-slate-400 text-xs font-bold uppercase">Impact Points</span>
+                    <h4 class="text-4xl font-black text-emerald-600 mt-2">2,450</h4>
+                </div>
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                    <span class="text-slate-400 text-xs font-bold uppercase">Rank</span>
+                    <h4 class="text-4xl font-black text-slate-900 mt-2">Silver Tier</h4>
+                </div>
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                    <span class="text-slate-400 text-xs font-bold uppercase">Reports Verified</span>
+                    <h4 class="text-4xl font-black text-blue-600 mt-2">08</h4>
+                </div>
+            </div>
+            
+            <div class="bg-emerald-900 rounded-3xl p-8 text-white mb-12 flex justify-between items-center">
+                <div>
+                    <h3 class="text-xl font-bold">Logged in as Steward</h3>
+                    <p class="text-emerald-200 opacity-80">You now have priority access to the reporting board below.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<section id="report" class="py-24 bg-slate-900 text-white relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl -mr-20 -mt-20"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-4xl font-extrabold mb-6">Initiate a <span class="text-emerald-500">Stewardship Action</span></h2>
+                <p class="text-slate-400 text-lg mb-8">Your eyes on the ground are our best tool for progress. Verified stewards can upload evidence directly to the community board.</p>
+                
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3 text-emerald-400">
+                        <i class="fa fa-check-circle"></i>
+                        <span class="text-sm font-bold uppercase tracking-wider">Geotagged Evidence</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-emerald-400">
+                        <i class="fa fa-check-circle"></i>
+                        <span class="text-sm font-bold uppercase tracking-wider">Priority Routing</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative">
+                <div class="bg-white rounded-3xl p-8 shadow-2xl transition-all" id="formContainer">
+                    <form id="reportForm" class="space-y-5 text-slate-900">
+                        <input type="text" id="name" placeholder="Full Name" class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-emerald-500" required>
+                        
+                        <select id="category" class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-emerald-500">
+                            <option>Road Infrastructure</option>
+                            <option>Electrical/Power Grid</option>
+                            <option>Water & Sanitation</option>
+                            <option>Public Safety</option>
+                        </select>
+
+                        <input type="text" id="location" placeholder="Exact Location (Street/Ward)" class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-emerald-500" required>
+                        
+                        <div class="relative">
+                            <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Evidence Photo</label>
+                            <input type="file" id="evidenceImage" accept="image/*" class="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100 cursor-pointer border border-slate-100 rounded-xl p-2">
+                        </div>
+
+                        <textarea id="description" placeholder="Brief description of the issue..." class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-emerald-500" rows="3"></textarea>
+                        
+                        <button type="submit" id="submitBtn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-4 rounded-xl transition-all shadow-lg shadow-emerald-200">
+                            SUBMIT TO STEWARDSHIP BOARD
+                        </button>
+                    </form>
+                </div>
+
+                <div id="loginWall" class="absolute inset-0 bg-white/60 backdrop-blur-md rounded-3xl flex flex-col items-center justify-center text-center p-8 z-20">
+                    <div class="w-16 h-16 bg-slate-900 text-white rounded-full flex items-center justify-center mb-4 shadow-xl">
+                        <i class="fa fa-lock text-xl"></i>
+                    </div>
+                    <h3 class="text-slate-900 text-xl font-black mb-2">Restricted Access</h3>
+                    <p class="text-slate-600 text-sm mb-6">Only registered Stewards can submit reports to prevent data spam.</p>
+                    <button onclick="toggleAuth()" class="bg-emerald-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-emerald-700 transition shadow-lg">
+                        Sign In / Create Account
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div id="authModal" class="fixed inset-0 z-[100] hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-md rounded-3xl p-8 shadow-2xl relative">
+        <div id="modalContent">
+            <h3 id="authTitle" class="text-2xl font-bold mb-2 text-slate-900">Steward Sign In</h3>
+            <p id="authSubtitle" class="text-slate-500 text-sm mb-6">Access your stewardship dashboard.</p>
+            
+            <div class="space-y-4">
+                <input type="email" id="email" placeholder="Email Address" class="w-full p-4 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-emerald-500 transition">
+                <input type="password" id="password" placeholder="Password" class="w-full p-4 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-emerald-500 transition">
+                
+                <button id="authSubmitBtn" onclick="handleAuth()" class="w-full bg-emerald-600 text-white py-4 rounded-xl font-bold hover:bg-emerald-700 transition shadow-lg shadow-emerald-100">
+                    Sign In
+                </button>
+            </div>
+
+            <div class="mt-6 pt-6 border-t border-slate-100 text-center">
+                <p id="toggleText" class="text-sm text-slate-600">
+                    New to the movement? 
+                    <button onclick="toggleAuthMode()" class="text-emerald-600 font-bold hover:underline">Create Account</button>
+                </p>
+                <button onclick="toggleAuth()" class="mt-4 text-slate-400 text-xs uppercase tracking-widest font-bold">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const SUPABASE_URL = 'https://lldndgdukujqblnugusc.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_Pb7grL8A13-LQ8TwJgzQ_g_AWJTO2Mg';
+    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    let isSignUpMode = false;
+
+    function toggleAuth() {
+        document.getElementById('authModal').classList.toggle('hidden');
+    }
+
+    function toggleAuthMode() {
+        isSignUpMode = !isSignUpMode;
+        const title = document.getElementById('authTitle');
+        const subtitle = document.getElementById('authSubtitle');
+        const btn = document.getElementById('authSubmitBtn');
+        const toggleBtnText = document.getElementById('toggleText');
+
+        if (isSignUpMode) {
+            title.innerText = "Join the Movement";
+            subtitle.innerText = "Become a verified Steward of Kanyama.";
+            btn.innerText = "Create Steward Account";
+            toggleBtnText.innerHTML = 'Already a Steward? <button onclick="toggleAuthMode()" class="text-emerald-600 font-bold hover:underline">Sign In</button>';
+        } else {
+            title.innerText = "Steward Sign In";
+            subtitle.innerText = "Access your stewardship dashboard.";
+            btn.innerText = "Sign In";
+            toggleBtnText.innerHTML = 'New to the movement? <button onclick="toggleAuthMode()" class="text-emerald-600 font-bold hover:underline">Create Account</button>';
+        }
+    }
+
+async function handleAuth() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const btn = document.getElementById('authSubmitBtn');
+    
+    btn.disabled = true;
+    btn.innerText = "Processing...";
+
+    if (isSignUpMode) {
+        // SIGN UP LOGIC
+        const { data, error } = await _supabase.auth.signUp({ email, password });
+        if (error) {
+            alert(error.message);
+        } else {
+            alert("Account created! Check your email for a link.");
+            toggleAuth(); // Close modal after signup
+        }
+    } else {
+        // SIGN IN LOGIC
+        const { data, error } = await _supabase.auth.signInWithPassword({ email, password });
+        
+        if (error) {
+            alert(error.message);
+        } else {
+            // SUCCESS: This is where the magic happens
+            console.log("Login successful, updating UI...");
+            
+            toggleAuth();          // 1. Close the modal
+            await checkUserStatus(); // 2. Tell the page to hide the Hero and unlock the Form
+            
+            // Optional: If you want a fresh start, use location.reload(); 
+            // but checkUserStatus() is smoother.
+        }
+    }
+    
+    btn.disabled = false;
+    btn.innerText = isSignUpMode ? "Create Steward Account" : "Sign In";
+}
+
+// Function to update the UI based on Auth state
+async function checkUserStatus() {
+    const { data: { session } } = await _supabase.auth.getSession();
+    
+    const guestView = document.getElementById('guestView');
+    const portalView = document.getElementById('portalView');
+    const loginWall = document.getElementById('loginWall');
+    const welcomeUser = document.getElementById('welcomeUser');
+
+    if (session) {
+        // 1. Switch the "Worlds"
+        if(guestView) guestView.classList.add('hidden');
+        if(portalView) portalView.classList.remove('hidden');
+        
+        // 2. Unlock the Report Form
+        if(loginWall) loginWall.classList.add('hidden');
+        
+        // 3. Update the Name
+        if(welcomeUser) welcomeUser.innerText = `Verified Steward: ${session.user.email}`;
+    } else {
+        // Show Public view and Lock the form
+        if(guestView) guestView.classList.remove('hidden');
+        if(portalView) portalView.classList.add('hidden');
+        if(loginWall) loginWall.classList.remove('hidden');
+    }
+}
+
+
+
+ // This function runs automatically to check if someone is logged in
+    async function checkUserStatus() {
+    const { data: { session } } = await _supabase.auth.getSession();
+    
+    const guestView = document.getElementById('guestView');
+    const portalView = document.getElementById('portalView');
+    const loginWall = document.getElementById('loginWall');
+
+    if (session) {
+        if(guestView) guestView.classList.add('hidden');
+        if(portalView) portalView.classList.remove('hidden');
+        if(loginWall) loginWall.classList.add('hidden'); // This unlocks the form!
+    } else {
+        if(guestView) guestView.classList.remove('hidden');
+        if(portalView) portalView.classList.add('hidden');
+        if(loginWall) loginWall.classList.remove('hidden');
+    }
+}
+
+    async function handleLogout() {
+        await _supabase.auth.signOut();
+        window.location.reload(); // Refresh to reset the view
+    }
+
+    // Run the check on page load
+    window.onload = checkUserStatus;
+
+
+
+    // FORM SUBMISSION LOGIC (Remains the same as before)
+    const reportForm = document.getElementById('reportForm');
+    if(reportForm) {
+        reportForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.innerText = "Uploading Report...";
+            
+            const { error } = await _supabase.from('reports').insert([{
+                steward_name: document.getElementById('name').value,
+                category: document.getElementById('category').value,
+                location: document.getElementById('location').value,
+                description: document.getElementById('description').value
+            }]);
+
+            if (error) alert(error.message);
+            else {
+                alert("Stewardship report successfully logged!");
+                reportForm.reset();
+            }
+            submitBtn.innerText = "SUBMIT TO STEWARDSHIP BOARD";
+        });
+    }
+</script>
+</body>
+</html>
