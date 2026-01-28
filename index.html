@@ -471,6 +471,15 @@ async function checkUserStatus() {
         window.location.reload(); // Refresh to reset the view
     }
 
+
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        if (!menu) return;
+        menu.classList.toggle('hidden');
+    }
+
+    
     // Run the check on page load
     window.onload = checkUserStatus;
 
@@ -502,3 +511,4 @@ async function checkUserStatus() {
 </script>
 </body>
 </html>
+
