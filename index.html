@@ -9,8 +9,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            /* Road background for the whole page:
+               - Place an image at images/road-bg.jpg in your repo, or swap the url() below for any external image
+               - Example Unsplash image you can try: 
+                 https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1950&q=80
+            */
+            background: linear-gradient(rgba(15,23,42,0.03), rgba(15,23,42,0.03)), url('images/road-bg.jpg') center/cover fixed no-repeat;
+            background-color: #f1f5f9; /* fallback */
+        }
         .hero-gradient { background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('images/kpage.jpg'); background-size: cover; background-position: center; }
+        /* Mobile menu overlay tweaks */
+        .mobile-menu-backdrop {
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(6px);
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
@@ -20,6 +34,16 @@
             <div class="text-2xl font-extrabold tracking-tight">
                 <span class="text-emerald-600">CITIZEN</span>Stewards
             </div>
+
+            <!-- Mobile toggle (visible on small screens) -->
+            <div class="flex items-center gap-4 md:hidden">
+                <button id="mobileMenuBtn" aria-label="Open menu" onclick="toggleMobileMenu()" class="p-2 rounded-md hover:bg-slate-100 transition">
+                    <svg class="w-6 h-6 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/>
+                    </svg>
+                </button>
+            </div>
+
             <div class="hidden md:flex space-x-8 items-center font-semibold text-sm uppercase tracking-wide">
                 <a href="#" class="hover:text-emerald-600 transition">Mission</a>
                 <a href="#impact" class="hover:text-emerald-600 transition">Impact</a>
@@ -29,6 +53,31 @@
             </div>
         </div>
     </nav>
+
+    <!-- Mobile menu overlay -->
+    <div id="mobileMenu" class="fixed inset-0 z-50 hidden mobile-menu-backdrop">
+        <div class="max-w-3xl mx-auto px-6 py-8">
+            <div class="flex items-center justify-between mb-6">
+                <div class="text-xl font-extrabold">
+                    <span class="text-emerald-600">CITIZEN</span>Stewards
+                </div>
+                <button aria-label="Close menu" onclick="toggleMobileMenu()" class="p-2 rounded-md hover:bg-slate-100">
+                    <svg class="w-6 h-6 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+            <nav class="flex flex-col gap-4 text-lg">
+                <a href="#" onclick="toggleMobileMenu()" class="py-3 px-4 rounded-lg hover:bg-slate-100">Mission</a>
+                <a href="#impact" onclick="toggleMobileMenu()" class="py-3 px-4 rounded-lg hover:bg-slate-100">Impact</a>
+                <a href="#report" onclick="toggleMobileMenu()" class="py-3 px-4 rounded-lg hover:bg-slate-100">Report an Incident</a>
+                <button onclick="toggleAuth(); toggleMobileMenu();" class="mt-4 bg-emerald-600 text-white px-5 py-3 rounded-full hover:bg-emerald-700 w-full text-left">
+                    <i class="fa fa-user-circle mr-2"></i> Steward Login
+                </button>
+            </nav>
+        </div>
+    </div>
 
     <div id="guestView">
     <section class="hero-gradient h-[85vh] flex items-center justify-center text-center px-6">
@@ -110,37 +159,34 @@
 
         <div class="grid md:grid-cols-4 gap-8">
             <div class="relative group">
-                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 text-2xl font-bold group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">1</div>
+                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 text-2xl font-bold group-hover:bg-emerald-600 group-hover:text-white transition">
                 <h4 class="text-xl font-bold mb-3 text-slate-900">Document</h4>
                 <p class="text-slate-500 text-sm leading-relaxed">Capture a clear photo and location of the infrastructure fault through the portal.</p>
                 <div class="hidden md:block absolute top-8 left-20 w-full border-t-2 border-dashed border-slate-100 -z-10"></div>
             </div>
 
             <div class="relative group">
-                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 text-2xl font-bold group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">2</div>
+                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 text-2xl font-bold group-hover:bg-emerald-600 group-hover:text-white transition">
                 <h4 class="text-xl font-bold mb-3 text-slate-900">Verify</h4>
                 <p class="text-slate-500 text-sm leading-relaxed">Community members upvote the report to confirm its urgency and accuracy.</p>
                 <div class="hidden md:block absolute top-8 left-20 w-full border-t-2 border-dashed border-slate-100 -z-10"></div>
             </div>
 
             <div class="relative group">
-                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 text-2xl font-bold group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">3</div>
+                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 text-2xl font-bold group-hover:bg-emerald-600 group-hover:text-white transition">
                 <h4 class="text-xl font-bold mb-3 text-slate-900">Resolve</h4>
                 <p class="text-slate-500 text-sm leading-relaxed">We coordinate with local council teams or verified contractors to perform the fix.</p>
                 <div class="hidden md:block absolute top-8 left-20 w-full border-t-2 border-dashed border-slate-100 -z-10"></div>
             </div>
 
             <div class="relative group">
-                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 text-2xl font-bold group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">4</div>
+                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 text-2xl font-bold group-hover:bg-emerald-600 group-hover:text-white transition">
                 <h4 class="text-xl font-bold mb-3 text-slate-900">Audit</h4>
                 <p class="text-slate-500 text-sm leading-relaxed">The final fix is photographed and the status is updated to 'Resolved' for transparency.</p>
             </div>
         </div>
     </div>
 </section>
-
-
-
 
 <section class="py-24 bg-slate-50 border-y border-slate-200">
     <div class="max-w-7xl mx-auto px-6">
@@ -248,14 +294,14 @@
                             <option>Public Safety</option>
                         </select>
 
-                        <input type="text" id="location" placeholder="Exact Location (Street/Ward)" class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-emerald-500" required>
+                        <input type="text" id="location" placeholder="Exact Location (Street/Ward)" class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-emerald-500">
                         
                         <div class="relative">
                             <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Evidence Photo</label>
-                            <input type="file" id="evidenceImage" accept="image/*" class="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100 cursor-pointer border border-slate-100 rounded-xl p-2">
+                            <input type="file" id="evidenceImage" accept="image/*" class="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm">
                         </div>
 
-                        <textarea id="description" placeholder="Brief description of the issue..." class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-emerald-500" rows="3"></textarea>
+                        <textarea id="description" placeholder="Brief description of the issue..." class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
                         
                         <button type="submit" id="submitBtn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-4 rounded-xl transition-all shadow-lg shadow-emerald-200">
                             SUBMIT TO STEWARDSHIP BOARD
@@ -365,9 +411,6 @@ async function handleAuth() {
             
             toggleAuth();          // 1. Close the modal
             await checkUserStatus(); // 2. Tell the page to hide the Hero and unlock the Form
-            
-            // Optional: If you want a fresh start, use location.reload(); 
-            // but checkUserStatus() is smoother.
         }
     }
     
@@ -402,38 +445,22 @@ async function checkUserStatus() {
     }
 }
 
-
-
- // This function runs automatically to check if someone is logged in
-    async function checkUserStatus() {
-    const { data: { session } } = await _supabase.auth.getSession();
-    
-    const guestView = document.getElementById('guestView');
-    const portalView = document.getElementById('portalView');
-    const loginWall = document.getElementById('loginWall');
-
-    if (session) {
-        if(guestView) guestView.classList.add('hidden');
-        if(portalView) portalView.classList.remove('hidden');
-        if(loginWall) loginWall.classList.add('hidden'); // This unlocks the form!
-    } else {
-        if(guestView) guestView.classList.remove('hidden');
-        if(portalView) portalView.classList.add('hidden');
-        if(loginWall) loginWall.classList.remove('hidden');
-    }
-}
-
     async function handleLogout() {
         await _supabase.auth.signOut();
         window.location.reload(); // Refresh to reset the view
     }
 
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        if (!menu) return;
+        menu.classList.toggle('hidden');
+    }
+
     // Run the check on page load
     window.onload = checkUserStatus;
 
-
-
-    // FORM SUBMISSION LOGIC (Remains the same as before)
+    // FORM SUBMISSION LOGIC
     const reportForm = document.getElementById('reportForm');
     if(reportForm) {
         reportForm.addEventListener('submit', async (e) => {
